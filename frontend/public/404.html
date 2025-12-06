@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cross-Platform Blend</title>
+    <script>
+      // Single Page App redirect for GitHub Pages
+      // Redirect all 404s to index.html with the path as a query parameter
+      const path = window.location.pathname;
+      const search = window.location.search;
+      const hash = window.location.hash;
+      window.location.replace(
+        window.location.origin + '/cross-platform-blend/' +
+        '?redirect=' + encodeURIComponent(path + search + hash)
+      );
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Music, Music2, Youtube, Apple, Disc3, Users, Share2, Sparkles, Play, ExternalLink, Copy, Check, Loader2, ChevronRight, Heart, Shuffle } from 'lucide-react';
 
 // ============ API Service ============
-const API_BASE = 'http://127.0.0.1:3001/api';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:3001/api';
 
 const api = {
   async get(endpoint) {

@@ -1,3 +1,33 @@
-/backend/.env
+# Dependencies
+node_modules/
 /backend/node_modules
 /frontend/node_modules
+
+# Environment files
+.env
+.env.local
+.env.*.local
+/backend/.env
+
+# Build outputs
+/frontend/dist
+/frontend/build
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Keys
+*.pem
+*.p8
+/backend/keys/
