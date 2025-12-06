@@ -1,0 +1,29 @@
+{
+  "name": "cross-platform-blend-backend",
+  "version": "1.0.0",
+  "description": "Backend service for cross-platform music blend creation",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^9.0.1",
+    "fuzzball": "^2.1.2",
+    "express-session": "^1.17.3",
+    "cookie-parser": "^1.4.6",
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0"
+  }
+}
