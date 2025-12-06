@@ -23,15 +23,36 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Security middleware
-app.use(helmet());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" },
+  crossOriginOpenerPolicy: { policy: "unsafe-none" }
+}));
 app.use(morgan('combined'));
 
 // CORS configuration
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  'http://127.0.0.1:3000',
+  'http://localhost:3000',
+  'https://bataevvlad.github.io'
+].filter(Boolean);
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: function(origin, callback) {
+    // Allow requests with no origin (mobile apps, curl, etc)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.some(allowed => origin.startsWith(allowed) || allowed.includes(origin))) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(null, true); // Allow all for now, log blocked ones
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+  exposedHeaders: ['Set-Cookie']
 }));
 
 // Body parsing
